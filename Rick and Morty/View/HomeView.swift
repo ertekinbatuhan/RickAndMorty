@@ -11,9 +11,20 @@ struct HomeView: View {
     
     @ObservedObject private var viewModel = RickandMortyViewModel()
     
+    @State private var search = ""
+    
+    var filteredResults: [Result] {
+           if search.isEmpty {
+               return viewModel.results
+           } else {
+               return viewModel.results.filter { $0.name.lowercased().contains(search.lowercased()) }
+           }
+       }
+       
+    
     var body: some View {
         NavigationStack {
-            List(viewModel.results) { result in
+            List(filteredResults) { result in
                 NavigationLink(destination: DetailsView(character: result)) {
                     HStack(alignment: .top, spacing: 16) {
                         AsyncImage(url: URL(string: result.image)) { image in
@@ -45,6 +56,8 @@ struct HomeView: View {
                     }
                     .padding(.vertical, 8)
                 }
+            }.searchable(text: $search) {
+                
             }
             .navigationTitle("Characters")
             .onAppear {
