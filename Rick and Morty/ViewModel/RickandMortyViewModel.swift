@@ -47,11 +47,16 @@ class RickandMortyViewModel: ObservableObject {
             }
         }
     }
+    
+    
 }
+
 
 enum RickAndMortyError: Error {
     case badUrl
     case noData
     case dataParseError
 }
+
+
 

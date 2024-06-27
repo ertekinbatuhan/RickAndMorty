@@ -44,6 +44,7 @@ struct Location: Codable , Identifiable{
     let id = UUID()
     let name: String
     let url: String
+    let residents : [String]?
 }
 
 enum Species: String, Codable {

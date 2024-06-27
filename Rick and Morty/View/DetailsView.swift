@@ -83,6 +83,6 @@ struct DetailsView: View {
 }
 
 #Preview {
-    DetailsView(character: Result(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: "", gender: .male, origin: Location(name: "Earth (C-137)", url: ""), location: Location(name: "Earth (Replacement Dimension)", url: ""), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episode: [], url: "", created: ""))
+    DetailsView(character: Result(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: "", gender: .male, origin: Location(name: "Earth (C-137)", url: "", residents: [""]), location: Location(name: "Earth (Replacement Dimension)", url: "",residents: [""]), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episode: [], url: "", created: ""))
 }
 
