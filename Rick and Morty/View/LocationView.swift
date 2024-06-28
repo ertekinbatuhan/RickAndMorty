@@ -6,14 +6,6 @@ struct LocationView: View {
     
     @State private var searchText = ""
     
-    var filteredLocations: [Locations.LocationData] {
-        if searchText.isEmpty {
-            return viewModel.locations
-        } else {
-            return viewModel.locations.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        }
-    }
-    
     var body: some View {
         NavigationStack {
             ScrollView {
@@ -25,7 +17,7 @@ struct LocationView: View {
                        .frame(maxWidth: .infinity)
                     
                     LazyVStack(spacing: 16) {
-                        ForEach(filteredLocations, id: \.id) { location in
+                        ForEach(LocationHelper.filteredLocations(locations: viewModel.locations, searchText: searchText), id: \.id) { location in
                             VStack(alignment: .leading, spacing: 8) {
                                 Text("Name: \(location.name)")
                                     .font(.headline).frame(maxWidth : .infinity).foregroundColor(.blue)

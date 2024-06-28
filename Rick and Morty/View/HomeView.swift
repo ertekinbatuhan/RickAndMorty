@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  Rick and Morty
-//
-//  Created by Batuhan Berk Ertekin on 27.06.2024.
-//
-
 import SwiftUI
 
 struct HomeView: View {
@@ -13,18 +6,9 @@ struct HomeView: View {
     
     @State private var search = ""
     
-    var filteredResults: [Result] {
-           if search.isEmpty {
-               return viewModel.results
-           } else {
-               return viewModel.results.filter { $0.name.lowercased().contains(search.lowercased()) }
-           }
-       }
-       
-    
     var body: some View {
-        NavigationStack {
-            List(filteredResults) { result in
+        NavigationView {
+            List(CharacterHelper.filteredResults(results: viewModel.results, search: search)) { result in
                 NavigationLink(destination: DetailsView(character: result)) {
                     HStack(alignment: .top, spacing: 16) {
                         AsyncImage(url: URL(string: result.image)) { image in
@@ -49,16 +33,21 @@ struct HomeView: View {
                                 .font(.subheadline)
                                 .foregroundColor(.secondary)
                             
-                            Text(result.status.rawValue)
-                                .font(.subheadline)
-                                .foregroundColor(result.status == .alive ? .green : .red)
+                            HStack(spacing: 4) {
+                                Text(result.status.rawValue)
+                                    .font(.subheadline)
+                                    .foregroundColor(result.status == .alive ? .green : .red)
+                                
+                                Circle()
+                                    .frame(width: 8, height: 8)
+                                    .foregroundColor(result.status == .alive ? .green : .red)
+                            }
                         }
                     }
                     .padding(.vertical, 8)
                 }
-            }.searchable(text: $search) {
-                
             }
+            .searchable(text: $search)
             .navigationTitle("Characters")
             .onAppear {
                 viewModel.loadData()
@@ -67,7 +56,9 @@ struct HomeView: View {
     }
 }
 
-#Preview {
-    HomeView()
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        HomeView()
+    }
 }
 

@@ -12,17 +12,10 @@ struct EpisodeView: View {
     @StateObject private var viewModel = EpisodesViewModel()
     @State private var searchText = ""
     
-    var filteredEpisodes: [Episode] {
-        if searchText.isEmpty {
-            return viewModel.episodes
-        } else {
-            return viewModel.episodes.filter { $0.name.lowercased().contains(searchText.lowercased()) }
-        }
-    }
-    
+   
     var body: some View {
         NavigationStack {
-            List(filteredEpisodes) { episode in
+            List(EpisodeHelper.filteredEpisodes(episodes: viewModel.episodes, searchText: searchText)) { episode in
                 EpisodeRow(episode: episode)
             }
             

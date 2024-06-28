@@ -12,7 +12,7 @@ struct TabBar: View {
             
             EpisodeView().tag(2)
             
-            Text("3").tag(3)
+           LocationView().tag(3)
         }
         
         .overlay(alignment : .bottom){
@@ -22,7 +22,6 @@ struct TabBar: View {
     }
     
 }
-
 
 #Preview {
     TabBar()
