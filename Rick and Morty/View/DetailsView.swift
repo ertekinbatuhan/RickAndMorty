@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct DetailsView: View {
-    let character: Result
+    
+    let character : Result
     
     var body: some View {
         ScrollView {
@@ -80,9 +81,5 @@ struct DetailsView: View {
         }
         .navigationTitle(character.name)
     }
-}
-
-#Preview {
-    DetailsView(character: Result(id: 1, name: "Rick Sanchez", status: .alive, species: .human, type: "", gender: .male, origin: Location(name: "Earth (C-137)", url: "", residents: [""]), location: Location(name: "Earth (Replacement Dimension)", url: "",residents: [""]), image: "https://rickandmortyapi.com/api/character/avatar/1.jpeg", episode: [], url: "", created: ""))
 }
 

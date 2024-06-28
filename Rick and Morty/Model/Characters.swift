@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RickandMorty: Codable  {
+struct Characters: Codable  {
     let info: Info
     let results: [Result]
 }
@@ -39,12 +39,15 @@ enum Gender: String, Codable {
     case unknown = "unknown"
 }
 
+
 // MARK: - Location
 struct Location: Codable , Identifiable{
     let id = UUID()
     let name: String
     let url: String
+    let type : String?
     let residents : [String]?
+    
 }
 
 enum Species: String, Codable {

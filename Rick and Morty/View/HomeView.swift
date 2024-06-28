@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     
-    @ObservedObject private var viewModel = RickandMortyViewModel()
+    @ObservedObject private var viewModel = CharactersViewModel()
     
     @State private var search = ""
     

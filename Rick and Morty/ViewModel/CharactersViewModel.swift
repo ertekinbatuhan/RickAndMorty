@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RickandMortyViewModel: ObservableObject {
+class CharactersViewModel: ObservableObject {
     
     @Published var results = [Result]()
     
@@ -25,7 +25,7 @@ class RickandMortyViewModel: ObservableObject {
             }
             
             do {
-                let decodedData = try JSONDecoder().decode(RickandMorty.self, from: data)
+                let decodedData = try JSONDecoder().decode(Characters.self, from: data)
                 completion(.success(decodedData.results))
             } catch {
                 completion(.failure(.dataParseError))
@@ -43,20 +43,17 @@ class RickandMortyViewModel: ObservableObject {
                     self.results = results
                 }
             case .failure(let error):
-                print("Error fetching data: \(error.localizedDescription)")
+                print("Error fetching character data: \(error.localizedDescription)")
             }
         }
+        
     }
     
-    
 }
-
 
 enum RickAndMortyError: Error {
     case badUrl
     case noData
     case dataParseError
 }
-
-
 
