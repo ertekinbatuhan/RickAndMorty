@@ -43,11 +43,7 @@ struct CustomTabView: View {
                             } else {
                                 Capsule().frame(height : 8 )
                                     .foregroundColor(.clear).offset(y : 3)
-                                
-                                
                             }
-                            
-                            
                         }
                         .foregroundColor(index + 1  == tabSelection ? .blue  : .gray)
                     }

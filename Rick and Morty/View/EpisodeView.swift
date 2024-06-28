@@ -12,7 +12,6 @@ struct EpisodeView: View {
     @StateObject private var viewModel = EpisodesViewModel()
     @State private var searchText = ""
     
-   
     var body: some View {
         NavigationStack {
             List(EpisodeHelper.filteredEpisodes(episodes: viewModel.episodes, searchText: searchText)) { episode in
