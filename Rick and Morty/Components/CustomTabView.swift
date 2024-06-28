@@ -14,12 +14,13 @@ struct CustomTabView: View {
     
     let tabBarItems : [(image : String , title : String)] = [
     
-        ("house", "Characters"),
-        ("heart", "Episodes"),
-        ("star", "Locations")
+        ("globe.asia.australia.fill", "Characters"),
+        ("bolt.fill", "Episodes"),
+        ("location", "Locations")
         
     ]
     
+
     var body: some View {
         ZStack{
             Capsule().frame(height: 80)
