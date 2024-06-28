@@ -19,11 +19,11 @@ struct LocationView: View {
                     LazyVStack(spacing: 16) {
                         ForEach(LocationHelper.filteredLocations(locations: viewModel.locations, searchText: searchText), id: \.id) { location in
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("Name: \(location.name)")
+                                Text(location.name)
                                     .font(.headline).frame(maxWidth : .infinity).foregroundColor(.blue)
-                                Text("Type: \(location.type)")
+                                Text(location.type)
                                     .font(.subheadline).frame(maxWidth : .infinity).foregroundColor(.green)
-                                Text("Dimension: \(location.dimension)").frame(maxWidth : .infinity)
+                                Text(location.dimension).frame(maxWidth : .infinity)
                                     .font(.subheadline).foregroundColor(.red)
                             }
                             .padding()

@@ -10,6 +10,7 @@ import Foundation
 class CharactersViewModel: ObservableObject {
     
     @Published var results = [Result]()
+    private let baseURL = "https://rickandmortyapi.com/api/"
     
     func fetchData(url: URL, completion: @escaping (Swift.Result<[Result], RickAndMortyError>) -> Void) {
         URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -34,7 +35,7 @@ class CharactersViewModel: ObservableObject {
     }
     
     func loadData() {
-        guard let url = URL(string: "https://rickandmortyapi.com/api/character") else { return }
+        guard let url = URL(string: "\(baseURL)character") else { return }
         
         fetchData(url: url) { result in
             switch result {

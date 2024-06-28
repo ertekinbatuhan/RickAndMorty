@@ -11,6 +11,7 @@ class EpisodesViewModel  : ObservableObject {
     
     @Published var episodes = [Episode]()
     
+    private let baseURL = "https://rickandmortyapi.com/api/"
     
     func fetchEpisodes(url: URL, completion: @escaping (Swift.Result<[Episode], RickAndMortyError>) -> Void) {
          URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -35,7 +36,7 @@ class EpisodesViewModel  : ObservableObject {
      }
     
     func loadEpisodes() {
-           guard let url = URL(string: "https://rickandmortyapi.com/api/episode") else { return }
+        guard let url = URL(string: "\(baseURL)episode") else { return }
            
            fetchEpisodes(url: url) { result in
                switch result {
